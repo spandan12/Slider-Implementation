@@ -7,6 +7,8 @@ Object.assign(container.style,{
     overflow:'hidden'
 });
 
+
+
 var wrapper=document.getElementsByClassName('wrapper')[0];
 // console.log(wrappers[0]);
 
@@ -38,6 +40,7 @@ for(i=0;i<(images.length);i++){
 
 
 
+
 // console.log(images)
 var wrapper_position;
 
@@ -59,7 +62,7 @@ function automatic(){
         if((wrapper_position % 800)==0){
             var start = new Date().getTime();
             var end = start;
-            while(end < start + 1000) {
+            while(end < start + 2000) {
               end = new Date().getTime();
            }
         }
@@ -77,7 +80,7 @@ function stopautomatic(){
 }
 
 function slideleft(){
-    stopautomatic();
+    clearInterval(intervalauto);
     var counter=0;
     
     var interval = setInterval(function() {
@@ -103,13 +106,13 @@ function slideleft(){
 }
 
 function slideright(){
-    stopautomatic();
+    clearInterval(intervalauto);
     var counter=0;
     
     var interval = setInterval(function() {
         var str =wrapper.style.left;
         wrapper_position=parseInt((str.substring(0,str.length-2)));
-        console.log(wrapper_position);
+        // console.log(wrapper_position);
         if(wrapper_position == 0){
             wrapper.style.left=`${-3920}px`;
             wrapper_position=wrapper.style.left;
