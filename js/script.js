@@ -39,10 +39,45 @@ for(i=0;i<(images.length);i++){
 
 
 // console.log(images)
+var wrapper_position;
+
+var intervalauto;
 
 
+
+function automatic(){
+
+    
+    intervalauto = setInterval(function() {
+        var str =wrapper.style.left;
+        wrapper_position=parseInt((str.substring(0,str.length-2)));
+        if(wrapper_position == -3980){
+            wrapper.style.left=`${0}px`;
+            wrapper_position=wrapper.style.left;
+        }
+        var old_wrapper_position= wrapper_position;
+        if((wrapper_position % 800)==0){
+            var start = new Date().getTime();
+            var end = start;
+            while(end < start + 1000) {
+              end = new Date().getTime();
+           }
+        }
+
+        wrapper.style.left=`${wrapper_position-20}px`;
+        // counter++;
+    }, 25);
+}
+
+function stopautomatic(){
+    clearInterval(intervalauto);
+    var stop_position=Math.round(wrapper_position/800);
+    wrapper.style.left=`${stop_position*800}px`;
+
+}
 
 function slideleft(){
+    stopautomatic();
     var counter=0;
     
     var interval = setInterval(function() {
@@ -68,6 +103,7 @@ function slideleft(){
 }
 
 function slideright(){
+    stopautomatic();
     var counter=0;
     
     var interval = setInterval(function() {
@@ -87,28 +123,6 @@ function slideright(){
 }
 
 
-function automatic(){
 
-    
-    var interval = setInterval(function() {
-        var str =wrapper.style.left;
-        wrapper_position=parseInt((str.substring(0,str.length-2)));
-        if(wrapper_position == -3980){
-            wrapper.style.left=`${0}px`;
-            wrapper_position=wrapper.style.left;
-        }
-        var old_wrapper_position= wrapper_position;
-        if((wrapper_position % 800)==0){
-            var start = new Date().getTime();
-            var end = start;
-            while(end < start + 1000) {
-              end = new Date().getTime();
-           }
-        }
-
-        wrapper.style.left=`${wrapper_position-20}px`;
-        // counter++;
-    }, 25);
-}
 
 
