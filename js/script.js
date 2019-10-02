@@ -86,3 +86,29 @@ function slideright(){
     }, 100);
 }
 
+
+function automatic(){
+
+    
+    var interval = setInterval(function() {
+        var str =wrapper.style.left;
+        wrapper_position=parseInt((str.substring(0,str.length-2)));
+        if(wrapper_position == -3980){
+            wrapper.style.left=`${0}px`;
+            wrapper_position=wrapper.style.left;
+        }
+        var old_wrapper_position= wrapper_position;
+        if((wrapper_position % 800)==0){
+            var start = new Date().getTime();
+            var end = start;
+            while(end < start + 1000) {
+              end = new Date().getTime();
+           }
+        }
+
+        wrapper.style.left=`${wrapper_position-20}px`;
+        // counter++;
+    }, 25);
+}
+
+
