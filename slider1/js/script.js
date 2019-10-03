@@ -8,7 +8,7 @@ Object.assign(container.style,{
 });
 
 
-
+var selects;
 var wrapper=document.getElementsByClassName('wrapper')[0];
 // console.log(wrappers[0]);
 
@@ -25,24 +25,57 @@ Object.assign(wrapper.style,{
 function loadfunction(){
     idr=event.srcElement.id;
     wrapper.style.left=`${parseInt(idr)*-800}px`;
+    console.log(idr);
+    for(i=0;i<(selects.length);i++){
+        if(i==parseInt(idr)){
+            Object.assign(selects[i].style,{
+                color: 'green',
+                backgroundColor : 'green'
+            });
+        }
+        else{
+            Object.assign(selects[i].style,{
+                color: 'white',
+                backgroundColor : 'white'
+            });
+        }
+    }    
 }
+
+
 
 selectControl=document.createElement('div');
 selectControl.classList.add('selectControl');
 container.appendChild(selectControl);
+Object.assign(selectControl.style,{
+    position : 'absolute',
+    left:'300px',
+    top : '250px',
+});
+
+
 
 for(i=0;i<(wrapper.children.length);i++){
     // images[i].classList.add('image'+(i+1));
     butto=document.createElement('button');
-    butto.innerHTML= i+1+"";
+    butto.innerHTML= 'O'+'';
     var str= `${i+1}`;
     butto.setAttribute("id",i);
+    Object.assign(butto.style,{
+        marginLeft:'10px',
+        marginRight: '10px',
+        // backgroundColor:'Transparent',
+        backgroundColor: 'white',
+        border: 'none',
+        borderRadius: '50%',
+        color: 'white'
+    });
     butto.setAttribute("onclick","loadfunction()");
     selectControl.appendChild(butto);
 }
 
-// selects=selectControl.children;
-// console.log(selects);
+selects=selectControl.children;
+console.log(selects);
 // selects[0].setAttribute("onclick","loadfunction1()");
 
 imageadded=document.createElement('img');
@@ -83,14 +116,21 @@ function automatic(){
             wrapper.style.left=`${0}px`;
             wrapper_position=wrapper.style.left;
         }
+        // document.getElementById('button1').style.display='none';
+
         var old_wrapper_position= wrapper_position;
         if((wrapper_position % 800)==0){
+            
             var start = new Date().getTime();
             var end = start;
             while(end < start + 2000) {
-              end = new Date().getTime();
+                console.log('show');                
+                end = new Date().getTime();
+                
            }
         }
+        // document.getElementById("button1").style.display='block';
+        
 
         wrapper.style.left=`${wrapper_position-20}px`;
         // counter++;
