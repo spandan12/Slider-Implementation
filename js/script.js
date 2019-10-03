@@ -20,6 +20,31 @@ Object.assign(wrapper.style,{
     // width : '800px',
     height : '300px'
 });
+
+
+function loadfunction(){
+    idr=event.srcElement.id;
+    wrapper.style.left=`${parseInt(idr)*-800}px`;
+}
+
+selectControl=document.createElement('div');
+selectControl.classList.add('selectControl');
+container.appendChild(selectControl);
+
+for(i=0;i<(wrapper.children.length);i++){
+    // images[i].classList.add('image'+(i+1));
+    butto=document.createElement('button');
+    butto.innerHTML= i+1+"";
+    var str= `${i+1}`;
+    butto.setAttribute("id",i);
+    butto.setAttribute("onclick","loadfunction()");
+    selectControl.appendChild(butto);
+}
+
+// selects=selectControl.children;
+// console.log(selects);
+// selects[0].setAttribute("onclick","loadfunction1()");
+
 imageadded=document.createElement('img');
 // imageadded.classList.add("lastimage");
 imageadded.src="./images/1.jpg";
